@@ -97,7 +97,7 @@ def split_data_target(element, device, logger=None):
         return [data.to(device)], target.to(device)  # tensor -> list
     elif len(element) > 2:
         # Dataloader with multiple inputs and one target
-        data, target = element[:-1], element[-1]
+        data, target = [element[0]], element[1]
         data_device = [tensor.to(device) for tensor in data]
         return data_device, target.to(device)
     else:
